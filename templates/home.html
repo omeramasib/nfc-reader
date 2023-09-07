@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NFC Data</title>
+</head>
+<body>
+    <h1>NFC Data</h1>
+    <div id="cardData"></div>
+
+    <script>
+        // AJAX request to fetch NFC data from the server
+        fetch('/nfc-data/')
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('cardData').innerHTML = data.content;
+                } else {
+                    console.error('Error:', data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
